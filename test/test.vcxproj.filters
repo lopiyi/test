@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+    </Filter>
+    <Filter Include="OCR">
+      <UniqueIdentifier>{c93865ba-e626-4c5f-ac03-4f3d579b3e92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OCR\include">
+      <UniqueIdentifier>{a62c457d-fdf0-473e-9fc4-feb279eb0ec5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OCR\src">
+      <UniqueIdentifier>{ca4d943b-0cf5-433e-94a9-f72d73d16e08}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="test.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <QtUic Include="test.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtMoc Include="test.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClCompile Include="test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="customview.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PPOcrVino.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OCR\src\clipper.cpp">
+      <Filter>OCR\src</Filter>
+    </ClCompile>
+    <ClCompile Include="OCR\src\postprocess_op.cpp">
+      <Filter>OCR\src</Filter>
+    </ClCompile>
+    <ClCompile Include="OCR\src\preprocess_op.cpp">
+      <Filter>OCR\src</Filter>
+    </ClCompile>
+    <ClCompile Include="OCR\src\utility.cpp">
+      <Filter>OCR\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="customview.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PPOcrTrt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PPOcrVino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OCR\include\clipper.h">
+      <Filter>OCR\include</Filter>
+    </ClInclude>
+    <ClInclude Include="OCR\include\postprocess_op.h">
+      <Filter>OCR\include</Filter>
+    </ClInclude>
+    <ClInclude Include="OCR\include\preprocess_op.h">
+      <Filter>OCR\include</Filter>
+    </ClInclude>
+    <ClInclude Include="OCR\include\utility.h">
+      <Filter>OCR\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="PPOcrTrt.cu" />
+  </ItemGroup>
+</Project>
