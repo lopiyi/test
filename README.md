@@ -16,6 +16,7 @@
 
  1. 配置好cuda和tensorrt的属性表。
  2. 修改customview.h中关于CPU的宏定义为false，移除PPOcrVino.h和PPOcrVino.cpp。
+ 3. GPU模式首次识别会生成模型，需要比较长的时间，耐心等待。
  
 ## 如何使用CPU编译
  1. 配置好openvino的属性表
