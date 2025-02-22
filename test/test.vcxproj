@@ -126,6 +126,7 @@
     <QtMoc Include="customview.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="dirent.h" />
     <ClInclude Include="OCR\include\clipper.h" />
     <ClInclude Include="OCR\include\postprocess_op.h" />
     <ClInclude Include="OCR\include\preprocess_op.h" />
