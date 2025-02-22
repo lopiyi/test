@@ -93,41 +93,30 @@ void CustomView::mouseReleaseEvent(QMouseEvent* event)
                         std::vector<std::string> rec_texts;
                         std::vector<float> rec_text_scores;
                         std::vector<PaddleOCR::OCRPredictResult> result;
-                        if (cpu)
+                        
+                        if (det == nullptr)
                         {
-                            if (det_vino==nullptr)
-                            {
-                                det_vino = new POV::PPOcrVinoDet;
-                                det_vino->loadModel("models/det.sim.xml");
-                                rec_vino = new POV::PPOcrVinoRec("models/ppocr_keys_v1.txt");
-                                rec_vino->loadModel("models/rec.sim.xml");
-                            }
-                            if (use_det)
-                            {
-                                result = det_vino->Run(cvMat);
-                                rec_vino->Run(result, cvMat, rec_texts, rec_text_scores);
-                            }
-                            else {
-                                rec_vino->Run(cvMat, rec_texts, rec_text_scores);
-                            }
+                            #if CPU
+                            det = new POV::PPOcrVinoDet;
+                            det->loadModel("models/det.sim.xml");
+                            rec = new POV::PPOcrVinoRec("models/ppocr_keys_v1.txt");
+                            rec->loadModel("models/rec.sim.xml");
+                            #else
+                            det = new POT::PPOcrTrtDet;
+                            det->loadModel("models/det.sim.trt");
+                            rec = new POT::PPOcrTrtRec("models/ppocr_keys_v1.txt");
+                            rec->loadModel("models/rec.sim.trt");
+                            #endif
+                        }
+                        
+
+                        if (use_det)
+                        {
+                            result = det->Run(cvMat);
+                            rec->Run(result, cvMat, rec_texts, rec_text_scores);
                         }
                         else {
-                            if (det==nullptr)
-                            {
-                                det = new POT::PPOcrTrtDet;
-                                det->loadModel("models/det.sim.trt");
-
-                                rec = new POT::PPOcrTrtRec("models/ppocr_keys_v1.txt");
-                                rec->loadModel("models/rec.sim.trt");
-                            }
-                            if (use_det)
-                            {
-                                result = det->Run(cvMat);
-                                rec->Run(result, cvMat, rec_texts, rec_text_scores);
-                            }
-                            else {
-                                rec->Run(cvMat, rec_texts, rec_text_scores);
-                            }
+                            rec->Run(cvMat, rec_texts, rec_text_scores);
                         }
                         //Utility::VisualizeBboxes(cvMat, result,"1.jpg");
                         QList<OCRResult> results = getOCRResults(result, rec_texts, pixelRect);

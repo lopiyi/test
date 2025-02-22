@@ -52,9 +52,6 @@
     <ClCompile Include="customview.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PPOcrVino.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="OCR\src\clipper.cpp">
       <Filter>OCR\src</Filter>
     </ClCompile>
@@ -66,6 +63,9 @@
     </ClCompile>
     <ClCompile Include="OCR\src\utility.cpp">
       <Filter>OCR\src</Filter>
+    </ClCompile>
+    <ClCompile Include="PPOcrVino.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -80,9 +80,6 @@
     <ClInclude Include="PPOcrTrt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PPOcrVino.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="OCR\include\clipper.h">
       <Filter>OCR\include</Filter>
     </ClInclude>
@@ -94,6 +91,9 @@
     </ClInclude>
     <ClInclude Include="OCR\include\utility.h">
       <Filter>OCR\include</Filter>
+    </ClInclude>
+    <ClInclude Include="PPOcrVino.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

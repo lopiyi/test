@@ -58,8 +58,8 @@
     <Import Project="props\tensorrt.props" />
     <Import Project="props\cudad.props" />
     <Import Project="props\opencvd.props" />
-    <Import Project="props\openvinod.props" />
     <Import Project="props\ocr.props" />
+    <Import Project="props\openvinod.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />

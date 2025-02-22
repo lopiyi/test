@@ -2,11 +2,17 @@
 
 #include <QGraphicsView>
 #include <QGraphicsRectItem>
-#include "PPOcrTrt.h"
-#include "PPOcrVino.h"
 #include <opencv2/opencv.hpp>
 #include <QPixmap>
 #include <QGraphicsItemGroup>
+
+#define CPU false
+
+#if CPU
+#include "PPOcrVino.h"
+#else
+#include "PPOcrTrt.h"
+#endif
 
 class CustomView  : public QGraphicsView
 {
@@ -41,10 +47,14 @@ private:
     QPoint rubberBandStartPos;
     QGraphicsRectItem* rubberBandItem;
 
+    #if CPU
+    POV::PPOcrVinoDet* det = nullptr;
+    POV::PPOcrVinoRec* rec = nullptr;
+    #else
     POT::PPOcrTrtDet* det = nullptr;
-    POV::PPOcrVinoDet* det_vino = nullptr;
     POT::PPOcrTrtRec* rec = nullptr;
-    POV::PPOcrVinoRec* rec_vino = nullptr;
-    bool cpu = false;
+    #endif
+
+    //bool cpu = false;
     bool use_det = true;
 };
