@@ -260,7 +260,7 @@ namespace POT {
 		}
 	}
 
-	__global__ void maskPostprocessing(float* input, int thresh,int width, int height)
+	__global__ void maskPostprocessing(float* input, float thresh,int width, int height)
 	{
 		int dx = blockDim.x * blockIdx.x + threadIdx.x;
 		int dy = blockDim.y * blockIdx.y + threadIdx.y;
