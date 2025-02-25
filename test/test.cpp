@@ -17,6 +17,7 @@ test::test(QWidget *parent)
 
     view->setScene(scene);
     connect(loadButton, &QPushButton::clicked, this, &test::onLoadButtonClicked);
+    resize(1200, 900);
 }
 
 test::~test()

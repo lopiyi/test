@@ -55,6 +55,5 @@ private:
     POT::PPOcrTrtRec* rec = nullptr;
     #endif
 
-    //bool cpu = false;
     bool use_det = true;
 };

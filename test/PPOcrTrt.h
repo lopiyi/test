@@ -144,7 +144,7 @@ namespace POT {
 		nvinfer1::ICudaEngine* engine = nullptr;
 		nvinfer1::IExecutionContext* execution_context = nullptr;
 
-		int rec_batch_num_ = 6;
+		int rec_batch_num_ = 10;
 		int rec_img_h_ = 48;
 		int rec_img_w_ = 320;
 		int limit_side_len = 960;

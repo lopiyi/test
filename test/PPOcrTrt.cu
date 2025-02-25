@@ -392,7 +392,7 @@ namespace POT {
 		config.flag = nvinfer1::BuilderFlag::kFP16;
 		config.KMIN = nvinfer1::Dims4{ 1, 3, 48, 64 };
 		config.kOPT = nvinfer1::Dims4{ 6, 3, 48, 320 };
-		config.kMAX = nvinfer1::Dims4{ 10, 3, 48, limit_side_len };
+		config.kMAX = nvinfer1::Dims4{ 16, 3, 48, limit_side_len };
 		return build(config, logger);
 	}
 

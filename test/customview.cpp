@@ -6,6 +6,7 @@
 #include <QFileDialog>
 #include <QPainter>
 #include <QScrollBar>
+#include <chrono>
 #include <QDebug>
 
 CustomView::CustomView(QWidget *parent)
@@ -90,6 +91,7 @@ void CustomView::mouseReleaseEvent(QMouseEvent* event)
                     if (!pixelRect.isEmpty()) {
                         QPixmap cropped = currentPixmapItem->pixmap().copy(pixelRect);
                         auto cvMat = QPixmapToCvMat(cropped);
+                        qDebug() << QString(u8"图像尺寸%1*%2").arg(pixelRect.width()).arg(pixelRect.height());
                         std::vector<std::string> rec_texts;
                         std::vector<float> rec_text_scores;
                         std::vector<PaddleOCR::OCRPredictResult> result;
@@ -109,15 +111,37 @@ void CustomView::mouseReleaseEvent(QMouseEvent* event)
                             #endif
                         }
                         
-
+                        QString message;
+                        auto t_start = std::chrono::high_resolution_clock::now();
                         if (use_det)
                         {
                             result = det->Run(cvMat);
+                            #if !CPU
+                            cudaDeviceSynchronize();
+                            auto t_detend = std::chrono::high_resolution_clock::now();
+                            float time_det = std::chrono::duration_cast<std::chrono::milliseconds>(t_detend - t_start).count();
+                            message += QString(u8"det模型检测耗时：%1 ms").arg(time_det);
+                            #endif
                             rec->Run(result, cvMat, rec_texts, rec_text_scores);
+                            #if !CPU
+                            cudaDeviceSynchronize();
+                            auto t_recend = std::chrono::high_resolution_clock::now();
+                            float time_rec = std::chrono::duration_cast<std::chrono::milliseconds>(t_recend - t_detend).count();
+                            float time_total = std::chrono::duration_cast<std::chrono::milliseconds>(t_recend - t_start).count();
+                            message += QString(tr(u8"，rec模型识别耗时：%1 ms, 总耗时：%2 ms")).arg(time_rec).arg(time_total);
+                            #endif
                         }
                         else {
                             rec->Run(cvMat, rec_texts, rec_text_scores);
+                            #if !CPU
+                            cudaDeviceSynchronize();
+                            auto t_recend = std::chrono::high_resolution_clock::now();
+                            float time_rec = std::chrono::duration_cast<std::chrono::milliseconds>(t_recend - t_start).count();
+                            float time_total = std::chrono::duration_cast<std::chrono::milliseconds>(t_recend - t_start).count();
+                            message += QString(tr(u8"rec模型识别耗时：%1 ms, 总耗时：%2 ms")).arg(time_rec).arg(time_total);
+                            #endif
                         }
+                        qDebug() << message;
                         //Utility::VisualizeBboxes(cvMat, result,"1.jpg");
                         QList<OCRResult> results = getOCRResults(result, rec_texts, pixelRect);
                         showOCRResults(results);
